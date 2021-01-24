@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#welcome-div {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color);
+}
+
+#welcome-div p {
+    margin: auto;
+    line-height: 1em;
+    font-family: "Recursive", serif;
+    font-size: 1em;
+    color: var(--foreground-color);
+}
+
+#welcome-div p span {
+    font-size: 4em;
+    font-weight: 600;
+}

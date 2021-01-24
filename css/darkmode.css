@@ -1,0 +1,11 @@
+.color {
+    --background-color: #FFF;
+    --foreground-color: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+    .color {
+        --background-color: #202020;
+        --foreground-color: #FFF;
+    }
+}
