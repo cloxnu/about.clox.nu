@@ -2,3 +2,29 @@
     font-family: Recursive;
     src: url("../res/fonts/Recursive.woff2") format("woff2");
 }
+
+@font-face {
+    font-family: Poppins;
+    src: url("../res/fonts/Poppins.ttf");
+    font-weight: 300 1000;
+}
+
+@font-face {
+    font-family: FjallaOne;
+    src: url("../res/fonts/FjallaOne-Regular.ttf");
+}
+
+@font-face {
+    font-family: AbrilFatface;
+    src: url("../res/fonts/AbrilFatface-Regular.ttf");
+}
+
+@font-face {
+    font-family: Staatliches;
+    src: url("../res/fonts/Staatliches-Regular.ttf");
+}
+
+@font-face {
+    font-family: Philosopher;
+    src: url("../res/fonts/Philosopher-Regular.ttf");
+}

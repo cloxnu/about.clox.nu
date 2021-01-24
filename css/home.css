@@ -13,13 +13,11 @@ body {
 
 #welcome-div p {
     margin: auto;
-    line-height: 1em;
-    font-family: "Recursive", serif;
-    font-size: 1em;
+    font: 300 2em Philosopher;
     color: var(--foreground-color);
 }
 
 #welcome-div p span {
-    font-size: 4em;
-    font-weight: 600;
+    font-size: 2em;
+    /*font-weight: 600;*/
 }
