@@ -2,22 +2,42 @@ body {
     margin: 0;
     width: 100vw;
     height: 100vh;
+    background-color: var(--background-color);
 }
 
 #welcome-div {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: var(--background-color);
 }
 
 #welcome-div p {
     margin: auto;
-    font: 300 2em Philosopher;
+    font: min(8vw, 8vh) Recursive;
+    transform: rotate(-20deg);
+    /*https://www.recursive.design/ var(--mono), var(--casl), var(--wght), var(--slnt), var(--CRSV)*/
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 540, "slnt" 0, "CRSV" 0.5;
+    transition: font-variation-settings 0.5s ease-in-out;
     color: var(--foreground-color);
 }
 
 #welcome-div p span {
-    font-size: 2em;
-    /*font-weight: 600;*/
+    font-size: min(25vw, 25vh);
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+}
+
+.content {
+    margin: auto;
+    font: 4vw Recursive;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 540, "slnt" 0, "CRSV" 0.5;
+    transition: font-variation-settings 0.5s ease-in-out;
+    color: var(--foreground-color);
+}
+
+.h100 {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100vh;
 }
