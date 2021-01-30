@@ -5,7 +5,7 @@
 
 @media (prefers-color-scheme: dark) {
     .color {
-        --background-color: #080808;
-        --foreground-color: #FFF;
+        --background-color: #eec0db;/*#080808;*/
+        --foreground-color: #162bf4;
     }
 }
