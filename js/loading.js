@@ -1,7 +1,8 @@
 function loaded() {
     window.setTimeout(function () {
-        document.body.classList.remove('loading')
+        switch_display()
         window.setTimeout(function () {
+            document.body.classList.remove('loading')
             document.getElementById('display-div').classList.add('appear')
         }, 1000)
 

@@ -6,6 +6,12 @@ body {
     position: fixed;
     background-color: var(--background-color);
     transition: background-color 1s;
+
+    --dash-bg-position-x1-from: 0;
+    --dash-bg-position-x2-from: calc(min(4vw, 4vh) * 20);
+    --dash-bg-position-x1-to: calc(min(4vw, 4vh) * 20);
+    --dash-bg-position-x2-to: 0;
+    --dash-switch-display-duration: 2s;
 }
 
 #bg-div {
@@ -32,8 +38,8 @@ body {
     transition: filter 1s;
 }
 
-#bg-border.speed-up {
-    animation: dash-speed-up 3s infinite ease-in-out;
+#bg-border.switch-display {
+    animation: dash-switch-display var(--dash-switch-display-duration) cubic-bezier(1, 0.1, 0, 0.9);
 }
 
 @keyframes dash-animation {
@@ -45,12 +51,12 @@ body {
     }
 }
 
-@keyframes dash-speed-up {
+@keyframes dash-switch-display {
     0% {
-        background-position: 0 0, calc(min(4vw, 4vh) * 20) 100%;
+        background-position: var(--dash-bg-position-x1-from) 0, var(--dash-bg-position-x2-from) 100%;
     }
     100% {
-        background-position: calc(min(4vw, 4vh) * 20) 0, 0 100%;
+        background-position: var(--dash-bg-position-x1-to) 0, var(--dash-bg-position-x2-to) 100%;
     }
 }
 
