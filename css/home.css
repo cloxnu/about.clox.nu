@@ -5,6 +5,7 @@ body {
     overflow: hidden;
     position: fixed;
     background-color: var(--background-color);
+    transition: background-color 1s;
 }
 
 #bg-div {
@@ -19,32 +20,61 @@ body {
     height: 85vh;
     transform: translate(calc(50vw - 50%), calc(50vh - 50%)) rotate(-20deg);
     background-color: var(--foreground-color);
+    transition: background-color 1s;
 }
 
 #bg-border {
     height: calc(85vh - min(4vw, 4vh));
-    background: linear-gradient(90deg, var(--background-color) 50%, transparent 50%) repeat-x, linear-gradient(90deg, var(--background-color) 50%, transparent 50%) repeat-x;
+    background: linear-gradient(90deg, black 50%, transparent 50%) repeat-x, linear-gradient(90deg, black 50%, transparent 50%) repeat-x;
+    filter: var(--background-color-filter);
     background-size: min(4vw, 4vh) min(6vw, 6vh), min(4vw, 4vh) min(6vw, 6vh);
-    animation: dash-animation 20s infinite linear;
+    animation: dash-animation 1s infinite linear;
+    transition: filter 1s;
+}
+
+#bg-border.speed-up {
+    animation: dash-speed-up 3s infinite ease-in-out;
 }
 
 @keyframes dash-animation {
     0% {
-        background-position: 0 0, 100% 100%;
+        background-position: 0 0, min(4vw, 4vh) 100%;
     }
     100% {
-        background-position: 100% 0, 0 100%;
+        background-position: min(4vw, 4vh) 0, 0 100%;
     }
 }
 
-#welcome-div {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--background-color);
+@keyframes dash-speed-up {
+    0% {
+        background-position: 0 0, calc(min(4vw, 4vh) * 20) 100%;
+    }
+    100% {
+        background-position: calc(min(4vw, 4vh) * 20) 0, 0 100%;
+    }
 }
 
-#welcome-div p {
+#display-div.disappear {
+    transform: translate(max(-100vw, calc(-100vh / 0.364)), min(100vh, calc(100vw * 0.364))); /* tan20° = 0.364 */
+    transition: transform 1s cubic-bezier(1, 0, 1, 1);
+}
+
+#display-div.appear {
+    transform: translate(0, 0);
+    transition: transform 1s cubic-bezier(0, 0, 0, 1.1);
+}
+
+#display-div {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: translate(min(100vw, calc(100vh / 0.364)), max(-100vh, calc(-100vw * 0.364))); /* tan20° = 0.364 */
+}
+
+#display-div #welcome-words {
     margin: auto;
     font: min(8vw, 8vh) Recursive;
     transform: rotate(-20deg);
@@ -52,9 +82,10 @@ body {
     font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
     animation: welcome-word-animation 20s infinite ease-in-out forwards;
     color: var(--background-color);
+    transition: color 1s;
 }
 
-#welcome-div p span {
+#display-div #welcome-words span {
     font-size: min(25vw, 25vh);
     font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
     animation: welcome-word-animation 20s infinite ease-in-out forwards;
