@@ -64,24 +64,42 @@ body {
 
 /* display div */
 
-#display-div.disappear, #right-arrow-wrapper {
+#display-div.disappear {
+    animation: none;
     transform: translate(max(-100vw, calc(-100vh / 0.364)), min(100vh, calc(100vw * 0.364))); /* tan20° = 0.364 */
-}
-
-#display-div.appear, #right-arrow-wrapper.appear {
-    transform: translate(0, 0);
-}
-
-#display-div, #right-arrow-wrapper.disappear {
-    transform: translate(min(100vw, calc(100vh / 0.364)), max(-100vh, calc(-100vw * 0.364))); /* tan20° = 0.364 */
-}
-
-#display-div.appear, #right-arrow-wrapper.appear {
-    transition: transform 1s cubic-bezier(0, 0, 0, 1);
-}
-
-#display-div.disappear, #right-arrow-wrapper.disappear {
     transition: transform 1s cubic-bezier(1, 0, 1, 1);
+}
+
+#right-arrow-wrapper.disappear {
+    animation: none;
+    transform: translate(min(100vw, calc(100vh / 0.364)), max(-100vh, calc(-100vw * 0.364))); /* tan20° = 0.364 */
+    transition: transform 1s cubic-bezier(1, 0, 1, 1);
+}
+
+#display-div {
+    animation: down-appear 1s cubic-bezier(0, 0, 0, 1);
+}
+
+#right-arrow-wrapper {
+    animation: up-appear 1s cubic-bezier(0, 0, 0, 1);
+}
+
+@keyframes down-appear {
+    from {
+        transform: translate(min(100vw, calc(100vh / 0.364)), max(-100vh, calc(-100vw * 0.364))); /* tan20° = 0.364 */
+    }
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes up-appear {
+    from {
+        transform: translate(max(-100vw, calc(-100vh / 0.364)), min(100vh, calc(100vw * 0.364))); /* tan20° = 0.364 */
+    }
+    to {
+        transform: translate(0, 0);
+    }
 }
 
 #display-div {
@@ -130,14 +148,14 @@ body {
 #right-arrow {
     position: absolute;
     width: calc(100vh + 100vw);
-    height: min(100vh, 100vw);
+    height: max(100vh, 100vw);
     color: var(--foreground-color);
     transition: color 1s;
     /* sin20° = 0.342, cos20° = 0.94 */
     --right-arrow-offset-x: calc(min(20vh, 20vw) * 0.94);
     --right-arrow-offset-y: calc(min(20vh, 20vw) * -0.342);
-    transform: translate(calc(50vw - 50% + min(92.5vh, 92.5vw) * 0.342 + var(--right-arrow-offset-x)),
-               calc(50vh - 50% + min(92.5vh, 92.5vw) * 0.94 + var(--right-arrow-offset-y))) rotate(-20deg);
+    transform: translate(calc(50vw - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--right-arrow-offset-x)),
+               calc(50vh - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--right-arrow-offset-y))) rotate(-20deg);
     text-align: center;
     cursor: pointer;
     z-index: 10;
@@ -147,17 +165,21 @@ body {
     animation: right-arrow-dance 2s infinite ease-in-out;
 }
 
+#right-arrow.disabled {
+    pointer-events: none;
+}
+
 @keyframes right-arrow-dance {
     0% {
-        transform: translate(calc(50vw - 50% + min(92.5vh, 92.5vw) * 0.342 + var(--right-arrow-offset-x) * 0.96),
-        calc(50vh - 50% + min(92.5vh, 92.5vw) * 0.94 + var(--right-arrow-offset-y) * 0.96)) rotate(-20deg);
+        transform: translate(calc(50vw - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--right-arrow-offset-x) * 0.96),
+        calc(50vh - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--right-arrow-offset-y) * 0.96)) rotate(-20deg);
     }
     50% {
-        transform: translate(calc(50vw - 50% + min(92.5vh, 92.5vw) * 0.342 + var(--right-arrow-offset-x) * 1.04),
-        calc(50vh - 50% + min(92.5vh, 92.5vw) * 0.94 + var(--right-arrow-offset-y) * 1.04)) rotate(-20deg);
+        transform: translate(calc(50vw - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--right-arrow-offset-x) * 1.04),
+        calc(50vh - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--right-arrow-offset-y) * 1.04)) rotate(-20deg);
     }
     100% {
-        transform: translate(calc(50vw - 50% + min(92.5vh, 92.5vw) * 0.342 + var(--right-arrow-offset-x) * 0.96),
-        calc(50vh - 50% + min(92.5vh, 92.5vw) * 0.94 + var(--right-arrow-offset-y) * 0.96)) rotate(-20deg);
+        transform: translate(calc(50vw - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--right-arrow-offset-x) * 0.96),
+        calc(50vh - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--right-arrow-offset-y) * 0.96)) rotate(-20deg);
     }
 }

@@ -1,12 +1,12 @@
 function loaded() {
-    window.setTimeout(function () {
-        switch_display()
-        window.setTimeout(function () {
+    window.setTimeout(() => {
+        bg_border_switch_display()
+        window.setTimeout(() => {
             document.body.classList.remove('loading')
-            document.getElementById('display-div').classList.add('appear')
+            display_div_appear()
         }, 1000)
-        window.setTimeout(function () {
-            document.getElementById('right-arrow-wrapper').classList.add('appear')
+        window.setTimeout(() => {
+            right_arrow_appear()
         }, 2000)
 
     }, 1000)
