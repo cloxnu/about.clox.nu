@@ -23,14 +23,14 @@ body {
 #rect-shape, #bg-border {
     position: absolute;
     width: calc(100vh + 100vw);
-    height: 85vh;
+    height: min(85vh, 85vw);
     transform: translate(calc(50vw - 50%), calc(50vh - 50%)) rotate(-20deg);
     background-color: var(--foreground-color);
     transition: background-color 1s;
 }
 
 #bg-border {
-    height: calc(85vh - min(4vw, 4vh));
+    height: calc(min(85vh, 85vw) - min(4vw, 4vh));
     background: linear-gradient(90deg, black 50%, transparent 50%) repeat-x, linear-gradient(90deg, black 50%, transparent 50%) repeat-x;
     filter: var(--background-color-filter);
     background-size: min(4vw, 4vh) min(6vw, 6vh), min(4vw, 4vh) min(6vw, 6vh);
@@ -60,24 +60,72 @@ body {
     }
 }
 
-#display-div.disappear {
-    transform: translate(max(-100vw, calc(-100vh / 0.364)), min(100vh, calc(100vw * 0.364))); /* tan20° = 0.364 */
-    transition: transform 1s cubic-bezier(1, 0, 1, 1);
+#right-arrow-wrapper {
+    z-index: 10;
 }
 
-#display-div.appear {
+#right-arrow {
+    position: absolute;
+    width: calc(100vh + 100vw);
+    height: min(100vh, 100vw);
+    color: var(--foreground-color);
+    transition: color 1s;
+    /* sin20° = 0.342, cos20° = 0.94 */
+    --right-arrow-offset-x: calc(min(20vh, 20vw) * 0.94);
+    --right-arrow-offset-y: calc(min(20vh, 20vw) * -0.342);
+    transform: translate(calc(50vw - 50% + min(92.5vh, 92.5vw) * 0.342 + var(--right-arrow-offset-x)),
+               calc(50vh - 50% + min(92.5vh, 92.5vw) * 0.94 + var(--right-arrow-offset-y))) rotate(-20deg);
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+    font: min(16vw, 16vh) Recursive;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
+    font-variant-ligatures: discretionary-ligatures;
+    animation: right-arrow-dance 2s infinite ease-in-out;
+}
+
+@keyframes right-arrow-dance {
+    0% {
+        transform: translate(calc(50vw - 50% + min(92.5vh, 92.5vw) * 0.342 + var(--right-arrow-offset-x) * 0.96),
+        calc(50vh - 50% + min(92.5vh, 92.5vw) * 0.94 + var(--right-arrow-offset-y) * 0.96)) rotate(-20deg);
+    }
+    50% {
+        transform: translate(calc(50vw - 50% + min(92.5vh, 92.5vw) * 0.342 + var(--right-arrow-offset-x) * 1.04),
+        calc(50vh - 50% + min(92.5vh, 92.5vw) * 0.94 + var(--right-arrow-offset-y) * 1.04)) rotate(-20deg);
+    }
+    100% {
+        transform: translate(calc(50vw - 50% + min(92.5vh, 92.5vw) * 0.342 + var(--right-arrow-offset-x) * 0.96),
+        calc(50vh - 50% + min(92.5vh, 92.5vw) * 0.94 + var(--right-arrow-offset-y) * 0.96)) rotate(-20deg);
+    }
+}
+
+#display-div.disappear, #right-arrow-wrapper {
+    transform: translate(max(-100vw, calc(-100vh / 0.364)), min(100vh, calc(100vw * 0.364))); /* tan20° = 0.364 */
+}
+
+#display-div.appear, #right-arrow-wrapper.appear {
     transform: translate(0, 0);
+}
+
+#display-div, #right-arrow-wrapper.disappear {
+    transform: translate(min(100vw, calc(100vh / 0.364)), max(-100vh, calc(-100vw * 0.364))); /* tan20° = 0.364 */
+}
+
+#display-div.appear, #right-arrow-wrapper.appear {
     transition: transform 1s cubic-bezier(0, 0, 0, 1.1);
 }
 
-#display-div {
+#display-div.disappear, #right-arrow-wrapper.disappear {
+    transition: transform 1s cubic-bezier(1, 0, 1, 1);
+}
+
+#display-div, #right-arrow-wrapper {
     position: absolute;
     display: flex;
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
-    transform: translate(min(100vw, calc(100vh / 0.364)), max(-100vh, calc(-100vw * 0.364))); /* tan20° = 0.364 */
 }
 
 #display-div #welcome-words {
