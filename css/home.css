@@ -111,7 +111,7 @@ body {
     top: 0;
 }
 
-#display-div #welcome-words {
+#welcome-words {
     margin: auto;
     font: min(8vw, 8vh) Recursive;
     transform: rotate(-20deg);
@@ -122,10 +122,14 @@ body {
     transition: color 1s;
 }
 
-#display-div #welcome-words span {
+#welcome-words span {
     font-size: min(25vw, 25vh);
     font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
     animation: welcome-word-animation 20s infinite ease-in-out forwards;
+}
+
+#welcome-words.paused, #welcome-words.paused span {
+    animation-play-state: paused;
 }
 
 @keyframes welcome-word-animation {
