@@ -24,7 +24,7 @@ function bg_border_switch_display() {
     const bg_position_x1 = style.backgroundPositionX.split(',')[0]
     const bg_position_x2 = style.backgroundPositionX.split(',')[1]
     document.body.style.setProperty('--dash-bg-position-x1-from', bg_position_x1)
-    document.body.style.setProperty('--dash-bg-position-x2-from', `calc(${bg_position_x2} + min(4vw, 4vh) * 20)`)
+    document.body.style.setProperty('--dash-bg-position-x2-from', `calc(${bg_position_x2} + min(4vw, 4vh) * 50)`)
     // document.body.style.setProperty('--dash-bg-position-x1-to', `calc(${bg_position_x1} + min(4vw, 4vh) * 20)`)
     // document.body.style.setProperty('--dash-bg-position-x2-to', bg_position_x2)
 

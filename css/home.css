@@ -8,8 +8,8 @@ body {
     transition: background-color 1s;
 
     --dash-bg-position-x1-from: 0;
-    --dash-bg-position-x2-from: calc(min(4vw, 4vh) * 20);
-    --dash-bg-position-x1-to: calc(min(4vw, 4vh) * 20);
+    --dash-bg-position-x2-from: calc(min(4vw, 4vh) * 50);
+    --dash-bg-position-x1-to: calc(min(4vw, 4vh) * 50);
     --dash-bg-position-x2-to: 0;
     --dash-switch-display-duration: 2s;
 }
@@ -41,7 +41,7 @@ body {
 }
 
 #bg-border.switch-display {
-    animation: dash-switch-display var(--dash-switch-display-duration) cubic-bezier(1, 0.1, 0, 0.9);
+    animation: dash-switch-display var(--dash-switch-display-duration) cubic-bezier(1, 0.04, 0, 0.96);
 }
 
 @keyframes dash-animation {
