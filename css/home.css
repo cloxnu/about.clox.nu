@@ -45,19 +45,19 @@ body {
 }
 
 @keyframes dash-animation {
-    0% {
+    from {
         background-position: 0 0, min(4vw, 4vh) 100%;
     }
-    100% {
+    to {
         background-position: min(4vw, 4vh) 0, 0 100%;
     }
 }
 
 @keyframes dash-switch-display {
-    0% {
+    from {
         background-position: var(--dash-bg-position-x1-from) 0, var(--dash-bg-position-x2-from) 100%;
     }
-    100% {
+    to {
         background-position: var(--dash-bg-position-x1-to) 0, var(--dash-bg-position-x2-to) 100%;
     }
 }
@@ -154,7 +154,7 @@ body {
     width: calc(100vh + 100vw);
     height: max(100vh, 100vw);
     color: var(--foreground-color);
-    transition: color 1s;
+    transition: color 1s, font-variation-settings 0.3s;
     /* sin20° = 0.342, cos20° = 0.94 */
     --right-arrow-offset-x: calc(min(20vh, 20vw) * 0.94);
     --right-arrow-offset-y: calc(min(20vh, 20vw) * -0.342);
@@ -166,24 +166,30 @@ body {
     font: min(16vw, 16vh) Recursive;
     font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
     font-variant-ligatures: discretionary-ligatures;
-    animation: right-arrow-dance 2s infinite ease-in-out;
+    animation: right-arrow-dance 1s infinite ease-in-out alternate;
 }
 
 #right-arrow.disabled {
     pointer-events: none;
 }
 
+@media (hover: hover) and (pointer: fine) {
+    #right-arrow:hover {
+        font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    }
+}
+
+#right-arrow.on-touch {
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+}
+
 @keyframes right-arrow-dance {
-    0% {
+    from {
         transform: translate(calc(50vw - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--right-arrow-offset-x) * 0.96),
         calc(50vh - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--right-arrow-offset-y) * 0.96)) rotate(-20deg);
     }
-    50% {
+    to {
         transform: translate(calc(50vw - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--right-arrow-offset-x) * 1.04),
         calc(50vh - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--right-arrow-offset-y) * 1.04)) rotate(-20deg);
-    }
-    100% {
-        transform: translate(calc(50vw - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--right-arrow-offset-x) * 0.96),
-        calc(50vh - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--right-arrow-offset-y) * 0.96)) rotate(-20deg);
     }
 }
