@@ -1,0 +1,16 @@
+#menu-div {
+    margin: auto;
+    transform: rotate(-20deg);
+    display: none;
+}
+
+#menu-div.show {
+    display: block;
+}
+
+.menu-item {
+    width: min(8vw, 8vh);
+    height: min(8vw, 8vh);
+    filter: var(--background-color-filter);
+    cursor: pointer;
+}

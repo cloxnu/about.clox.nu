@@ -4,14 +4,26 @@ const Level = {
 const maxPage = {
     'MainMenu': 2
 }
+const pageID = {
+    'MainMenu': ['welcome-words', 'menu-div']
+}
 let currentLevel = Level.MainMenu
 let currentPage = 0
 
-function switch_display() {
+function next_page() {
+    currentPage = (currentPage + 1) % maxPage[currentLevel]
+    switch_display(pageID[currentLevel][currentPage])
+}
+
+function switch_display(id) {
     bg_border_switch_display()
     right_arrow_appear(false)
     display_div_appear(false)
     window.setTimeout(() => {
+        for (const element of document.getElementsByClassName('show')) {
+            element.classList.remove('show')
+        }
+        document.getElementById(id).classList.add('show')
         right_arrow_appear()
         display_div_appear()
     }, 1000)
@@ -53,6 +65,5 @@ function right_arrow_appear(is_appear=true) {
 }
 
 function right_arrow_clicked() {
-    console.log("clicked")
-    switch_display()
+    next_page()
 }
