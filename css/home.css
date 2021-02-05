@@ -12,6 +12,13 @@ body {
     --dash-bg-position-x1-to: calc(min(4vw, 4vh) * 50);
     --dash-bg-position-x2-to: 0;
     --dash-switch-display-duration: 2s;
+
+    --display-div-running-offset: min(4vw, 4vh);
+    /* tan20° = 0.364, sin20° = 0.342, cos20° = 0.94 */
+    --display-div-up: translate(min(100vw, calc(100vh / 0.364)), max(-100vh, calc(-100vw * 0.364)));
+    --display-div-down: translate(max(-100vw, calc(-100vh / 0.364)), min(100vh, calc(100vw * 0.364)));
+    --display-div-running-from: translate(calc(var(--display-div-running-offset) * 0.94), calc((-1) * var(--display-div-running-offset) * 0.342));
+    --display-div-running-to: translate(calc((-1) * var(--display-div-running-offset) * 0.94), calc(var(--display-div-running-offset) * 0.342));
 }
 
 /* background div */
@@ -77,51 +84,92 @@ body {
 
 /* display div */
 
-#display-div.forward_disappear, #left-arrow-wrapper.disappear {
-    animation: none;
-    transform: translate(max(-100vw, calc(-100vh / 0.364)), min(100vh, calc(100vw * 0.364))); /* tan20° = 0.364 */
-    transition: transform 1s cubic-bezier(1, 0, 1, 1);
-}
-
-#display-div.backward_disappear, #right-arrow-wrapper.disappear {
-    animation: none;
-    transform: translate(min(100vw, calc(100vh / 0.364)), max(-100vh, calc(-100vw * 0.364))); /* tan20° = 0.364 */
-    transition: transform 1s cubic-bezier(1, 0, 1, 1);
-}
-
-#display-div, #display-div.forward_appear, #left-arrow-wrapper {
-    animation: down-appear 1s cubic-bezier(0, 0, 0, 1);
-}
-
-#display-div.backward_appear, #right-arrow-wrapper {
-    animation: up-appear 1s cubic-bezier(0, 0, 0, 1);
-}
-
-@keyframes down-appear {
-    from {
-        transform: translate(min(100vw, calc(100vh / 0.364)), max(-100vh, calc(-100vw * 0.364))); /* tan20° = 0.364 */
-    }
-    to {
-        transform: translate(0, 0);
-    }
-}
-
-@keyframes up-appear {
-    from {
-        transform: translate(max(-100vw, calc(-100vh / 0.364)), min(100vh, calc(100vw * 0.364))); /* tan20° = 0.364 */
-    }
-    to {
-        transform: translate(0, 0);
-    }
-}
-
 #display-div {
     position: absolute;
     display: flex;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     left: 0;
     top: 0;
+}
+
+#display-div.forward_appear {
+    animation: display-div-forward-appear 1s cubic-bezier(0, 0, 0, 0.995);
+}
+
+#display-div.backward_appear {
+    animation: display-div-backward-appear 1s cubic-bezier(0, 0, 0, 1.005);
+}
+
+#display-div.forward_disappear {
+    animation: display-div-forward-disappear 1s cubic-bezier(1, 0.005, 1, 1);
+}
+
+#display-div.backward_disappear {
+    animation: display-div-backward-disappear 1s cubic-bezier(1, -0.005, 1, 1);
+}
+
+#display-div-wrapper {
+    transform: var(--display-div-running-from);
+}
+
+#display-div-wrapper.running {
+    animation: display-div-running 8s linear forwards;
+}
+
+#left-arrow-wrapper.disappear {
+    animation: none;
+    transform: var(--display-div-down);
+    transition: transform 1s cubic-bezier(1, 0, 1, 1);
+}
+
+#right-arrow-wrapper.disappear {
+    animation: none;
+    transform: var(--display-div-up);
+    transition: transform 1s cubic-bezier(1, 0, 1, 1);
+}
+
+#left-arrow-wrapper {
+    animation: down-appear 1s cubic-bezier(0, 0, 0, 1);
+}
+
+#right-arrow-wrapper {
+    animation: up-appear 1s cubic-bezier(0, 0, 0, 1);
+}
+
+@keyframes display-div-running {
+    from { transform: var(--display-div-running-from); }
+    to { transform: var(--display-div-running-to); }
+}
+
+@keyframes display-div-forward-appear {
+    from { transform: var(--display-div-up); }
+    to { transform: translate(0, 0); }
+}
+
+@keyframes display-div-backward-appear {
+    from { transform: var(--display-div-down); }
+    to { transform: translate(0, 0); }
+}
+
+@keyframes display-div-forward-disappear {
+    from { transform: translate(0, 0); }
+    to { transform: var(--display-div-down); }
+}
+
+@keyframes display-div-backward-disappear {
+    from { transform: translate(0, 0); }
+    to { transform: var(--display-div-up); }
+}
+
+@keyframes down-appear {
+    from { transform: var(--display-div-up); }
+    to { transform: translate(0, 0); }
+}
+
+@keyframes up-appear {
+    from { transform: var(--display-div-down); }
+    to { transform: translate(0, 0); }
 }
 
 /* interaction div */

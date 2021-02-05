@@ -3,6 +3,7 @@ const maxPage = pageID.length
 let currentPage = 0
 
 function switch_page(is_next=true) {
+    clearTimeout(display_div_running_timer)
     currentPage = (currentPage + (is_next ? 1 : (maxPage-1))) % maxPage
     switch_display(pageID[currentPage], is_next)
 }
@@ -16,8 +17,9 @@ function switch_display(id, is_next=true) {
             element.classList.remove('show')
         }
         document.getElementById(id).classList.add('show')
-        arrow_appear()
+        document.getElementById('display-div-wrapper').classList.remove('running')
         display_div_appear(is_next)
+        arrow_appear()
     }, 1000)
 }
 
@@ -46,16 +48,29 @@ function bg_border_switch_display(is_forward=true) {
     }
 }
 
+let display_div_running_timer
+
+function display_div_running() {
+    document.getElementById('display-div-wrapper').classList.add('running')
+    clearTimeout(display_div_running_timer)
+    display_div_running_timer = window.setTimeout(() => switch_page(), 8000)
+}
+
 function display_div_appear(is_forward=true, is_appear=true) {
     if (is_appear) {
-        document.getElementById('display-div').classList.remove('forward_disappear')
-        document.getElementById('display-div').classList.remove('backward_disappear')
-        document.getElementById('display-div').classList.add((is_forward ? 'forward_' : 'backward_') + 'appear')
+        const display_div = document.getElementById('display-div')
+        display_div.classList.remove('forward_disappear')
+        display_div.classList.remove('backward_disappear')
+        display_div.classList.add((is_forward ? 'forward_' : 'backward_') + 'appear')
+        window.setTimeout(() => {
+            display_div_running()
+        }, 1000)
     }
     else {
-        document.getElementById('display-div').classList.add((is_forward ? 'forward_' : 'backward_') + 'disappear')
-        document.getElementById('display-div').classList.remove('forward_appear')
-        document.getElementById('display-div').classList.remove('backward_appear')
+        const display_div = document.getElementById('display-div')
+        display_div.classList.add((is_forward ? 'forward_' : 'backward_') + 'disappear')
+        display_div.classList.remove('forward_appear')
+        display_div.classList.remove('backward_appear')
     }
 }
 

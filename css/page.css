@@ -60,6 +60,7 @@
     font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
     transition: font-variation-settings 0.3s;
     color: var(--background-color);
+    text-align: center;
     margin-top: min(10vw, 10vh);
     margin-bottom: min(10vw, 10vh);
 }
