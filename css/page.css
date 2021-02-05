@@ -51,7 +51,8 @@
 }
 
 #say-hi.show {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 #say-hi p {
@@ -59,6 +60,8 @@
     font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
     transition: font-variation-settings 0.3s;
     color: var(--background-color);
+    margin-top: min(10vw, 10vh);
+    margin-bottom: min(10vw, 10vh);
 }
 
 #say-hi p a {
@@ -75,5 +78,21 @@
 
 #say-hi p a.on-touch {
     font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+}
+
+#say-hi-social-media {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.say-hi-item {
+    margin: min(4vw, 4vh);
+}
+
+.say-hi-item img {
+    width: min(10vw, 10vh);
+    height: min(10vw, 10vh);
+    filter: var(--background-color-filter);
 }
 
