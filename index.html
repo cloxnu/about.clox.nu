@@ -16,9 +16,9 @@
     <title>I'm cloxnu</title>
 
     <link rel="stylesheet" type="text/css" href="css/font.css">
-    <link rel="stylesheet" type="text/css" href="css/darkmode.css">
+    <link rel="stylesheet" type="text/css" href="css/color.css">
     <link rel="stylesheet" type="text/css" href="css/home.css">
-    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/page.css">
     <script src="js/home.js"></script>
 </head>
 <body class="color loading">
@@ -27,16 +27,18 @@
     <span id="rect-shape"></span>
     <span id="bg-border"></span>
 </div>
-<div id="display-div" class="disappear">
+<div id="display-div" class="forward_disappear">
     <p id="welcome-words" class="paused show">Hi, I'm<br/><span>cloxnu</span></p>
-    <div id="menu-div">
-        <img src="res/icon/dog.svg" alt="" id="menu-an-dog" class="menu-item"/>
-        <img src="res/icon/dog.svg" alt="" id="menu-an-dog2" class="menu-item"/>
+    <div id="say-hi">
+        <p>Say <a href="mailto:hi@clox.nu?subject=Hi,%20I'm%20" class="touch">hi@clox.nu</a> with me.</p>
     </div>
 </div>
-<div id="interaction-div">
+<div id="interaction-div" class="disabled">
+    <div id="left-arrow-wrapper" class="disappear">
+        <span id="left-arrow" class="touch" onclick="left_arrow_clicked()">=></span>
+    </div>
     <div id="right-arrow-wrapper" class="disappear">
-        <span id="right-arrow" class="disabled touch" onclick="right_arrow_clicked()">=></span>
+        <span id="right-arrow" class="touch" onclick="right_arrow_clicked()">=></span>
     </div>
 </div>
 

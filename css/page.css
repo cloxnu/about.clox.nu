@@ -1,0 +1,79 @@
+/* Page 1: welcome words */
+
+#welcome-words {
+    margin: auto;
+    font: min(8vw, 8vh) Recursive;
+    transform: rotate(-20deg);
+    display: none;
+    /*https://www.recursive.design/ var(--mono), var(--casl), var(--wght), var(--slnt), var(--CRSV)*/
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    animation: welcome-word-animation 20s infinite ease-in-out forwards;
+    color: var(--background-color);
+    transition: color 1s;
+}
+
+#welcome-words.show {
+    display: block;
+}
+
+#welcome-words span {
+    font-size: min(25vw, 25vh);
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    animation: welcome-word-animation 20s infinite ease-in-out forwards;
+}
+
+#welcome-words.paused, #welcome-words.paused span {
+    animation-play-state: paused;
+}
+
+@keyframes welcome-word-animation {
+    30% {
+        font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    }
+    55% {
+        font-variation-settings: "MONO" 0, "CASL" 0, "wght" 400, "slnt" 0, "CRSV" 0.5;
+    }
+    75% {
+        font-variation-settings: "MONO" 0, "CASL" 0, "wght" 400, "slnt" 0, "CRSV" 0.5;
+    }
+    100% {
+        font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    }
+}
+
+
+/* Page 2: say hi */
+
+#say-hi {
+    margin: auto;
+    transform: rotate(-20deg);
+    display: none;
+}
+
+#say-hi.show {
+    display: block;
+}
+
+#say-hi p {
+    font: min(7vw, 7vh) Recursive;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
+    transition: font-variation-settings 0.3s;
+    color: var(--background-color);
+}
+
+#say-hi p a {
+    color: var(--background-color);
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
+    transition: font-variation-settings 0.3s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #say-hi p a:hover {
+        font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    }
+}
+
+#say-hi p a.on-touch {
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+}
+

@@ -7,7 +7,7 @@ function loaded() {
             display_div_appear()
         }, 1000)
         window.setTimeout(() => {
-            right_arrow_appear()
+            arrow_appear()
         }, 2000)
 
     }, 1000)
