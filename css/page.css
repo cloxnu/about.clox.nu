@@ -97,3 +97,54 @@
     filter: var(--background-color-filter);
 }
 
+
+/* Page 0: foot */
+
+#foot {
+    margin: auto;
+    transform: rotate(-20deg);
+    display: none;
+}
+
+#foot.show {
+    display: flex;
+    flex-direction: column;
+}
+
+#foot p, #foot a {
+    transition: font-variation-settings 0.3s;
+    color: var(--background-color);
+    text-align: center;
+}
+
+#foot p#foot-inspired {
+    font: min(4vw, 4vh) Recursive;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    margin-top: min(4vw, 4vh);
+    margin-bottom: min(4vw, 4vh);
+}
+
+#foot a.foot-inspired-item {
+    font: min(3vw, 3vh) Recursive;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
+    margin-top: min(2vw, 2vh);
+    margin-bottom: min(2vw, 2vh);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #foot a:hover {
+        font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    }
+}
+
+#foot a.on-touch {
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+}
+
+#foot p#foot-copyright {
+    font: min(4vw, 4vh) Recursive;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 700, "slnt" 0, "CRSV" 0.5;
+    margin-top: min(8vw, 8vh);
+    margin-bottom: min(4vw, 4vh);
+}
+

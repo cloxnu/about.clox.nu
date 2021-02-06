@@ -115,8 +115,6 @@ body {
 
 #display-div-wrapper.running {
     animation: display-div-running 8s linear forwards;
-    /*transform: var(--display-div-running-to);*/
-    /*transition: transform 8s linear;*/
 }
 
 #left-arrow-wrapper.disappear {
@@ -172,6 +170,16 @@ body {
 @keyframes up-appear {
     from { transform: var(--display-div-down); }
     to { transform: translate(0, 0); }
+}
+
+@keyframes down-disappear {
+    from { transform: translate(0, 0); }
+    to { transform: var(--display-div-up); }
+}
+
+@keyframes up-disappear {
+    from { transform: translate(0, 0); }
+    to { transform: var(--display-div-down); }
 }
 
 /* interaction div */

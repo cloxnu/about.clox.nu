@@ -1,4 +1,4 @@
-const pageID = ['welcome-words', 'say-hi']
+const pageID = ['welcome-words', 'say-hi', 'foot']
 const maxPage = pageID.length
 let currentPage = 0
 

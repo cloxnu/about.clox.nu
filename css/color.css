@@ -1,9 +1,18 @@
 /* https://tests.christianoliff.com/hex-to-css-filter-generator/ for filter color */
 
 .color {
-    --background-color: #eec0db;
-    --foreground-color: #162bf4;
-    --background-color-filter: invert(81%) sepia(7%) saturate(2011%) hue-rotate(295deg) brightness(110%) contrast(87%);
+    --background-color: var(--color21-bg-color);
+    --foreground-color: var(--color21-fg-color);
+    --background-color-filter: var(--color21-bg-color-filter);
+
+    /* https://vanschneider.com/colors */
+    --color24-bg-color: #eec0db;
+    --color24-fg-color: #162bf4;
+    --color24-bg-color-filter: invert(81%) sepia(7%) saturate(2011%) hue-rotate(295deg) brightness(110%) contrast(87%);
+
+    --color21-bg-color: #f1c3b8;
+    --color21-fg-color: #18227d;
+    --color21-bg-color-filter: invert(90%) sepia(15%) saturate(1244%) hue-rotate(305deg) brightness(101%) contrast(89%);
 }
 
 .loading.color {
