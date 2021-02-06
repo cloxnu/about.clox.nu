@@ -94,27 +94,33 @@ body {
 }
 
 #display-div.forward_appear {
-    animation: display-div-forward-appear 1s cubic-bezier(0, 0, 0, 0.995);
+    animation: display-div-forward-appear 1s cubic-bezier(0, 0, 0, 1);
 }
 
 #display-div.backward_appear {
-    animation: display-div-backward-appear 1s cubic-bezier(0, 0, 0, 1.005);
+    animation: display-div-backward-appear 1s cubic-bezier(0, 0, 0, 1);
 }
 
 #display-div.forward_disappear {
-    animation: display-div-forward-disappear 1s cubic-bezier(1, 0.005, 1, 1);
+    animation: display-div-forward-disappear 1s cubic-bezier(1, 0, 1, 1);
 }
 
 #display-div.backward_disappear {
-    animation: display-div-backward-disappear 1s cubic-bezier(1, -0.005, 1, 1);
+    animation: display-div-backward-disappear 1s cubic-bezier(1, 0, 1, 1);
 }
 
 #display-div-wrapper {
     transform: var(--display-div-running-from);
 }
 
+#display-div-wrapper.paused {
+    transform: translate(0, 0);
+    transition: transform 0.5s ease-in-out;
+}
+
 #display-div-wrapper.running {
-    animation: display-div-running 8s linear forwards;
+    transform: var(--display-div-running-to);
+    transition: transform 8s linear;
 }
 
 #left-arrow-wrapper.disappear {
@@ -135,11 +141,6 @@ body {
 
 #right-arrow-wrapper {
     animation: up-appear 1s cubic-bezier(0, 0, 0, 1);
-}
-
-@keyframes display-div-running {
-    from { transform: var(--display-div-running-from); }
-    to { transform: var(--display-div-running-to); }
 }
 
 @keyframes display-div-forward-appear {

@@ -61,8 +61,8 @@
     transition: font-variation-settings 0.3s;
     color: var(--background-color);
     text-align: center;
-    margin-top: min(10vw, 10vh);
-    margin-bottom: min(10vw, 10vh);
+    margin-top: min(4vw, 4vh);
+    margin-bottom: min(8vw, 8vh);
 }
 
 #say-hi p a {
