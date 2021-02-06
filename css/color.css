@@ -13,6 +13,35 @@
     --color21-bg-color: #f1c3b8;
     --color21-fg-color: #18227d;
     --color21-bg-color-filter: invert(90%) sepia(15%) saturate(1244%) hue-rotate(305deg) brightness(101%) contrast(89%);
+/*invert(13%) sepia(34%) saturate(6640%) hue-rotate(232deg) brightness(84%) contrast(103%);*/
+
+    --color31-bg-color: #1b1d1c;
+    --color31-fg-color: #ea1721;
+    --color31-bg-color-filter: invert(6%) sepia(7%) saturate(589%) hue-rotate(98deg) brightness(92%) contrast(87%);
+
+    --color37-bg-color: #eed974;
+    --color37-fg-color: #28292b;
+    --color37-bg-color-filter: invert(87%) sepia(39%) saturate(524%) hue-rotate(354deg) brightness(97%) contrast(91%); /* loss: 0.1 */
+
+    --color68-bg-color: #f8ebee;
+    --color68-fg-color: #0b3934;
+    --color68-bg-color-filter: invert(89%) sepia(9%) saturate(222%) hue-rotate(300deg) brightness(107%) contrast(95%); /* loss: 0.2 */
+
+    --color79-bg-color: #d27d78;
+    --color79-fg-color: #121738;
+    --color79-bg-color-filter: invert(56%) sepia(15%) saturate(1218%) hue-rotate(315deg) brightness(98%) contrast(89%); /* loss: 0.1 */
+
+    --color87-bg-color: #e3e3e3;
+    --color87-fg-color: #a68a73;
+    --color87-bg-color-filter: invert(99%) sepia(6%) saturate(307%) hue-rotate(285deg) brightness(115%) contrast(78%);
+
+    --color108-bg-color: #98c1ae;
+    --color108-fg-color: #337e81;
+    --color108-bg-color-filter: invert(89%) sepia(22%) saturate(307%) hue-rotate(98deg) brightness(81%) contrast(86%);
+
+    --color116-bg-color: #79ddf2;
+    --color116-fg-color: #00346d;
+    --color116-bg-color-filter: invert(83%) sepia(17%) saturate(1412%) hue-rotate(157deg) brightness(101%) contrast(90%);
 }
 
 .loading.color {

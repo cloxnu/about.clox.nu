@@ -1,14 +1,15 @@
-const pageID = ['welcome-words', 'say-hi', 'foot']
+const pageID = ['welcome-words', 'say-hi', 'welcome-words2', 'my-travel-blog', 'foot']
+const colorNum = ['21', '21', '37', '68', '37']
 const maxPage = pageID.length
 let currentPage = 0
 
 function switch_page(is_next=true) {
     clearTimeout(display_div_running_timer)
     currentPage = (currentPage + (is_next ? 1 : (maxPage-1))) % maxPage
-    switch_display(pageID[currentPage], is_next)
+    switch_display(currentPage, is_next)
 }
 
-function switch_display(id, is_next=true) {
+function switch_display(currentPage, is_next=true) {
     bg_border_switch_display(is_next)
     arrow_appear(false)
     display_div_appear(is_next, false)
@@ -16,8 +17,11 @@ function switch_display(id, is_next=true) {
         for (const element of document.getElementsByClassName('show')) {
             element.classList.remove('show')
         }
-        document.getElementById(id).classList.add('show')
+        document.getElementById(pageID[currentPage]).classList.add('show')
         document.getElementById('display-div-wrapper').classList.remove('running')
+        document.body.style.setProperty('--background-color', `var(--color${colorNum[currentPage]}-bg-color)`)
+        document.body.style.setProperty('--foreground-color', `var(--color${colorNum[currentPage]}-fg-color)`)
+        document.body.style.setProperty('--background-color-filter', `var(--color${colorNum[currentPage]}-bg-color-filter)`)
         display_div_appear(is_next)
         arrow_appear()
     }, 1000)

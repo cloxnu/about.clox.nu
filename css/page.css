@@ -58,7 +58,7 @@
 #say-hi p {
     font: min(7vw, 7vh) Recursive;
     font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
-    transition: font-variation-settings 0.3s;
+    transition: font-variation-settings 0.3s, color 1s;
     color: var(--background-color);
     text-align: center;
     margin-top: min(4vw, 4vh);
@@ -67,8 +67,8 @@
 
 #say-hi p a {
     color: var(--background-color);
-    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
-    transition: font-variation-settings 0.3s;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" -15, "CRSV" 0.5;
+    transition: font-variation-settings 0.3s, color 1s;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -98,6 +98,81 @@
 }
 
 
+/* Page 3: welcome words 2 */
+
+#welcome-words2 {
+    margin: auto;
+    font: min(7vw, 7vh) Recursive;
+    transform: rotate(-20deg);
+    display: none;
+    line-height: 150%;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    animation: welcome-word-animation 20s infinite ease-in-out forwards;
+    color: var(--background-color);
+    transition: color 1s;
+}
+
+#welcome-words2.show {
+    display: block;
+}
+
+
+/* Page 4: travel blog */
+
+#my-travel-blog {
+    margin: auto;
+    transform: rotate(-20deg);
+    display: none;
+}
+
+#my-travel-blog.show {
+    display: flex;
+    flex-direction: column;
+}
+
+#my-travel-blog img {
+    width: min(10vw, 10vh);
+    height: min(10vw, 10vh);
+    filter: var(--background-color-filter);
+    transition: filter 1s;
+    margin: min(4vw, 4vh) auto;
+}
+
+#my-travel-blog p, #my-travel-blog a {
+    transition: font-variation-settings 0.3s, color 1s;
+    color: var(--background-color);
+    text-align: center;
+}
+
+#my-travel-blog p {
+    font: min(5vw, 5vh) Recursive;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    margin-top: min(4vw, 4vh);
+    margin-bottom: min(4vw, 4vh);
+}
+
+#my-travel-blog a {
+    font: min(7vw, 7vh) Recursive;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" -15, "CRSV" 0.5;
+    margin-top: min(4vw, 4vh);
+    margin-bottom: min(4vw, 4vh);
+}
+
+#my-travel-blog a span {
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #my-travel-blog a:hover {
+        font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+    }
+}
+
+#my-travel-blog a.on-touch {
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
+}
+
+
 /* Page 0: foot */
 
 #foot {
@@ -112,7 +187,7 @@
 }
 
 #foot p, #foot a {
-    transition: font-variation-settings 0.3s;
+    transition: font-variation-settings 0.3s, color 1s;
     color: var(--background-color);
     text-align: center;
 }
@@ -126,7 +201,7 @@
 
 #foot a.foot-inspired-item {
     font: min(3vw, 3vh) Recursive;
-    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" 0, "CRSV" 0.5;
+    font-variation-settings: "MONO" 0, "CASL" 1, "wght" 600, "slnt" -15, "CRSV" 0.5;
     margin-top: min(2vw, 2vh);
     margin-bottom: min(2vw, 2vh);
 }
