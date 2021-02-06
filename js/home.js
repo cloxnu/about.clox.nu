@@ -1,21 +1,6 @@
 const pageID = ['welcome-words', 'say-hi']
 const maxPage = pageID.length
 let currentPage = 0
-let paused = false
-
-function pause(is_pause=true) {
-    paused = is_pause
-    clearTimeout(display_div_running_timer)
-    if (is_pause) {
-        document.getElementById('display-div-wrapper').classList.add('paused')
-        document.getElementById('display-div-wrapper').classList.remove('running')
-    }
-    else {
-        document.getElementById('display-div-wrapper').classList.add('running')
-        document.getElementById('display-div-wrapper').classList.remove('paused')
-        display_div_running_timer = window.setTimeout(() => switch_page(), 4000)
-    }
-}
 
 function switch_page(is_next=true) {
     clearTimeout(display_div_running_timer)
@@ -77,11 +62,9 @@ function display_div_appear(is_forward=true, is_appear=true) {
         display_div.classList.remove('forward_disappear')
         display_div.classList.remove('backward_disappear')
         display_div.classList.add((is_forward ? 'forward_' : 'backward_') + 'appear')
-        if (!paused) {
-            window.setTimeout(() => {
-                display_div_running()
-            }, 1000)
-        }
+        window.setTimeout(() => {
+            display_div_running()
+        }, 1000)
     }
     else {
         const display_div = document.getElementById('display-div')
