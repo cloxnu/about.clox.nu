@@ -146,6 +146,15 @@
 }
 
 
+/* Page 7: The Tech Blog */
+
+#the-tech-blog img {
+    height: min(20vw, 20vh);
+    width: auto;
+    filter: none;
+}
+
+
 /* Page: to be continued */
 
 #to-be-continued {

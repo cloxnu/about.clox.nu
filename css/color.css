@@ -35,6 +35,14 @@
     --color87-fg-color: #a68a73;
     --color87-bg-color-filter: invert(99%) sepia(6%) saturate(307%) hue-rotate(285deg) brightness(115%) contrast(78%);
 
+    --color92-bg-color: #384d9d;
+    --color92-fg-color: #f6f3eb;
+    --color92-bg-color-filter: invert(27%) sepia(49%) saturate(984%) hue-rotate(194deg) brightness(99%) contrast(94%);
+
+    --color99-bg-color: #96d0ff;
+    --color99-fg-color: #a46799;
+    --color99-bg-color-filter: invert(91%) sepia(21%) saturate(5257%) hue-rotate(178deg) brightness(102%) contrast(102%);
+
     --color108-bg-color: #98c1ae;
     --color108-fg-color: #337e81;
     --color108-bg-color-filter: invert(89%) sepia(22%) saturate(307%) hue-rotate(98deg) brightness(81%) contrast(86%);
