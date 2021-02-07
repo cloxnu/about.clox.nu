@@ -12,5 +12,5 @@ function loaded() {
 
 }
 
-window.onpageshow = loaded;
+window.onload = loaded;
 
