@@ -19,6 +19,18 @@ body {
     --display-div-down: translate(max(-100vw, calc(-100vh / 0.364)), min(100vh, calc(100vw * 0.364)));
     --display-div-running-from: translate(calc(var(--display-div-running-offset) * 0.94), calc((-1) * var(--display-div-running-offset) * 0.342));
     --display-div-running-to: translate(calc((-1) * var(--display-div-running-offset) * 0.94), calc(var(--display-div-running-offset) * 0.342));
+
+    /* sin20° = 0.342, cos20° = 0.94 */
+    --right-arrow-offset-x: calc(min(20vh, 20vw) * 0.94);
+    --right-arrow-offset-y: calc(min(20vh, 20vw) * -0.342);
+    --left-arrow-offset-x: calc(min(20vh, 20vw) * -0.94);
+    --left-arrow-offset-y: calc(min(20vh, 20vw) * 0.342);
+
+    --right-arrow-dance-from: translate(calc(var(--right-arrow-offset-x) * 0.04), calc(var(--right-arrow-offset-y) * 0.04));
+    --right-arrow-dance-to: translate(calc(var(--right-arrow-offset-x) * (-0.04)), calc(var(--right-arrow-offset-y) * (-0.04)));
+    --left-arrow-dance-from: translate(calc(var(--left-arrow-offset-x) * 0.04), calc(var(--left-arrow-offset-y) * 0.04));
+    --left-arrow-dance-to: translate(calc(var(--left-arrow-offset-x) * (-0.04)), calc(var(--left-arrow-offset-y) * (-0.04)));
+
 }
 
 /* background div */
@@ -117,26 +129,6 @@ body {
     animation: display-div-running 8s linear forwards;
 }
 
-#left-arrow-wrapper.disappear {
-    animation: none;
-    transform: var(--display-div-down);
-    transition: transform 1s cubic-bezier(1, 0, 1, 1);
-}
-
-#right-arrow-wrapper.disappear {
-    animation: none;
-    transform: var(--display-div-up);
-    transition: transform 1s cubic-bezier(1, 0, 1, 1);
-}
-
-#left-arrow-wrapper {
-    animation: down-appear 1s cubic-bezier(0, 0, 0, 1);
-}
-
-#right-arrow-wrapper {
-    animation: up-appear 1s cubic-bezier(0, 0, 0, 1);
-}
-
 @keyframes display-div-running {
     from { transform: var(--display-div-running-from); }
     to { transform: var(--display-div-running-to); }
@@ -162,6 +154,37 @@ body {
     to { transform: var(--display-div-up); }
 }
 
+
+/* left and right arrow appear animation */
+
+#left-arrow-wrapper.disappear {
+    animation: none;
+    transform: var(--display-div-down);
+    transition: transform 1s cubic-bezier(1, 0, 1, 1);
+}
+
+#right-arrow-wrapper.disappear {
+    animation: none;
+    transform: var(--display-div-up);
+    transition: transform 1s cubic-bezier(1, 0, 1, 1);
+}
+
+#left-arrow-wrapper {
+    animation: down-appear 1s cubic-bezier(0, 0, 0, 1);
+}
+
+#right-arrow-wrapper {
+    animation: up-appear 1s cubic-bezier(0, 0, 0, 1);
+}
+
+#left-arrow-dancer {
+    animation: left-arrow-dance 1s infinite ease-in-out alternate;
+}
+
+#right-arrow-dancer {
+    animation: right-arrow-dance 1s infinite ease-in-out alternate;
+}
+
 @keyframes down-appear {
     from { transform: var(--display-div-up); }
     to { transform: translate(0, 0); }
@@ -180,6 +203,16 @@ body {
 @keyframes up-disappear {
     from { transform: translate(0, 0); }
     to { transform: var(--display-div-down); }
+}
+
+@keyframes right-arrow-dance {
+    from { transform: var(--right-arrow-dance-from); }
+    to { transform: var(--right-arrow-dance-to); }
+}
+
+@keyframes left-arrow-dance {
+    from { transform: var(--left-arrow-dance-from); }
+    to { transform: var(--left-arrow-dance-to); }
 }
 
 /* interaction div */
@@ -203,19 +236,11 @@ body {
 }
 
 #right-arrow {
-    /* sin20° = 0.342, cos20° = 0.94 */
-    --right-arrow-offset-x: calc(min(20vh, 20vw) * 0.94);
-    --right-arrow-offset-y: calc(min(20vh, 20vw) * -0.342);
     transform: translate(calc(50vw - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--right-arrow-offset-x)), calc(50vh - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--right-arrow-offset-y))) rotate(-20deg);
-    animation: right-arrow-dance 1s infinite ease-in-out alternate;
 }
 
 #left-arrow {
-    /* sin20° = 0.342, cos20° = 0.94 */
-    --left-arrow-offset-x: calc(min(20vh, 20vw) * -0.94);
-    --left-arrow-offset-y: calc(min(20vh, 20vw) * 0.342);
     transform: translate(calc(50vw - 50% - (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--left-arrow-offset-x)), calc(50vh - 50% - (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--left-arrow-offset-y))) rotate(160deg);
-    animation: left-arrow-dance 1s infinite ease-in-out alternate;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -226,22 +251,4 @@ body {
 
 #right-arrow.on-touch, #left-arrow.on-touch {
     font-variation-settings: "MONO" 0, "CASL" 1, "wght" 800, "slnt" 0, "CRSV" 0.5;
-}
-
-@keyframes right-arrow-dance {
-    from {
-        transform: translate(calc(50vw - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--right-arrow-offset-x) * 0.96), calc(50vh - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--right-arrow-offset-y) * 0.96)) rotate(-20deg);
-    }
-    to {
-        transform: translate(calc(50vw - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--right-arrow-offset-x) * 1.04), calc(50vh - 50% + (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--right-arrow-offset-y) * 1.04)) rotate(-20deg);
-    }
-}
-
-@keyframes left-arrow-dance {
-    from {
-        transform: translate(calc(50vw - 50% - (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--left-arrow-offset-x) * 0.96), calc(50vh - 50% - (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--left-arrow-offset-y) * 0.96)) rotate(160deg);
-    }
-    to {
-        transform: translate(calc(50vw - 50% - (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.342 + var(--left-arrow-offset-x) * 1.04), calc(50vh - 50% - (min(42.5vh, 42.5vw) + max(50vh, 50vw)) * 0.94 + var(--left-arrow-offset-y) * 1.04)) rotate(160deg);
-    }
 }
