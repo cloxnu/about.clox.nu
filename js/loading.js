@@ -12,5 +12,7 @@ function loaded() {
 
 }
 
-window.onload = loaded;
+window.onload = () => {
+    loaded()
+};
 
