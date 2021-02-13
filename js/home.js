@@ -1,5 +1,5 @@
-const pageID = ['welcome-words', 'say-hi', 'welcome-words2', 'my-travel-blog', 'our-products', 'my-first-book-notes', 'the-tech-blog', 'to-be-continued', 'foot']
-const colorNum = ['21', '21', '37', '92', '92', '92', '92', '37', '37']
+const pageID = ['welcome-words', 'say-hi', 'welcome-words2', 'my-travel-blog', 'my-live-blog', 'our-products', 'my-first-book-notes', 'the-tech-blog', 'to-be-continued', 'foot']
+const colorNum = ['21', '21', '37', '92', '92', '92', '92', '92', '37', '37']
 const maxPage = pageID.length
 let currentPage = 0
 
