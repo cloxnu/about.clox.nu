@@ -1,4 +1,4 @@
-# clox.nu
-The website, https://clox.nu.
+# about.clox.nu
+The website, https://about.clox.nu.
 
 ![home](res/icon/home.png)
